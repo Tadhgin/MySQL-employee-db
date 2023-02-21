@@ -6,7 +6,7 @@ require("console.table");
 firstPrompt();
 
 function firstPrompt() {
-	inquirer.prompt(prompt.firstPrompt).then(function ({ task }) {
+	inquirer.prompt(prompt.firstPrompt).then(function ({ task })
 		switch (task) {
 			case "View Employees":
 				viewEmployee();
