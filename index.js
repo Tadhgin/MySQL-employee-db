@@ -1,63 +1,71 @@
 const inquirer = require("inquirer");
 const table = require("console.table");
+// MySQL Connection
 const connection = require("./config/connection");
+// Prompts
 const prompt = require("./config/prompts");
 require("console.table");
+
+// banner
+console.log
+// launch app
 firstPrompt();
 
 function firstPrompt() {
-	inquirer.prompt(prompt.firstPrompt).thenfunction ({ task } )
-}				switch (task) {
+	// Main Menu
+	inquirer.prompt(prompt.firstPrompt).then(function ({ task }) {
+		switch (task) {
 			case "View Employees":
 				viewEmployee();
-				break;
+				break; 
 			case "View Employees by Manager":
 				viewEmployeeByManager();
 				break;
 			case "View Employees by Department":
 				viewEmployeeByDepartment();
-				break; 
+				break;
 			case "View Departments":
 				viewDepartments();
-				break;  
+				break;
 			case "View Roles":
 				viewRoles();
-				break; 
+				break;
 			case "View Department Budget":
 				viewDepartmentBudget();
-				break; 
+				break;
 			case "Add Employee":
 				addEmployee();
-				break;  
+				break;
 			case "Add Department":
 				addDepartment();
-				break; 
+				break;
 			case "Add Role":
 				addRole();
-				break; 
+				break;
 			case "Update Employee Role":
 				updateEmployeeRole();
-				break; 
+				break;
 			case "Update Employee Manager":
 				updateEmployeeManager();
-				break; 
+				break;
 			case "Remove Employee":
 				deleteEmployee();
-				break; 
+				break;
 			case "Remove Department":
 				deleteDepartment();
-				break; 
+				break;
 			case "Remove Role":
 				deleteRole();
-				break; 
+				break;
 			case "Exit":
 				console.log(
 					`\n“Goodbye, Vietnam! That’s right, I’m history, I’m outta here, I got the lucky ticket home, baby."\n- Robin Williams`,
 				);
 				connection.end();
 				break;
-	};
-
+		}
+	});
+}
 
 function viewEmployee() {
 	console.log("Employee Rota:\n");
@@ -94,8 +102,8 @@ function viewEmployeeByManager() {
 	connection.query(query, function (err, res) {
 		if (err) throw err;
 
-		// Select manager to view employees
 		const managerChoices = res
+
 			.filter((mgr) => mgr.manager_id)
 			.map(({ manager_id, manager }) => ({
 				value: manager_id,
@@ -126,6 +134,7 @@ function viewEmployeeByManager() {
 			});
 	});
 }
+
 
 function viewEmployeeByDepartment() {
 	console.log("View employees by department\n");
@@ -169,6 +178,7 @@ function viewEmployeeByDepartment() {
 			});
 	});
 }
+
 function viewDepartments() {
 	var query = "SELECT * FROM department";
 	connection.query(query, function (err, res) {
@@ -383,15 +393,18 @@ const updateEmployeeManager = () => {
   FROM employee`,
 		(err, res) => {
 			res.forEach((element) => {
+				// for each ID and Name push into array
 				employees.push(
 					`${element.id} ${element.first_name} ${element.last_name}`,
 				);
 			});
 			// Select employee's new manager
 			inquirer.prompt(prompt.updateManager(employees)).then((answer) => {
+				
 				let idCode = parseInt(answer.update);
 				let managerCode = parseInt(answer.manager);
 				connection.query(
+					
 					`UPDATE employee SET manager_id = ${managerCode} WHERE id = ${idCode}`,
 					(err, res) => {
 						if (err) throw err;
@@ -426,6 +439,7 @@ function deleteEmployee() {
 			.prompt(prompt.deleteEmployeePrompt(deleteEmployeeChoices))
 			.then(function (answer) {
 				var query = `DELETE FROM employee WHERE ?`;
+				// after prompting, remove item from the db
 				connection.query(query, { id: answer.employeeId }, function (err, res) {
 					if (err) throw err;
 
@@ -436,6 +450,7 @@ function deleteEmployee() {
 				});
 			});
 	});
+}
 
 function deleteDepartment() {
 	console.log("\nRemove a Department:\n");
@@ -454,6 +469,7 @@ function deleteDepartment() {
 			.prompt(prompt.deleteDepartmentPrompt(deleteDepartmentChoices))
 			.then(function (answer) {
 				var query = `DELETE FROM department WHERE ?`;
+				// after prompting, remove item from the db
 				connection.query(query, { id: answer.departmentId }, function (
 					err,
 					res,
@@ -486,6 +502,7 @@ function deleteRole() {
 			.prompt(prompt.deleteRolePrompt(deleteRoleChoices))
 			.then(function (answer) {
 				var query = `DELETE FROM role WHERE ?`;
+				// after prompting, remove item from the db
 				connection.query(query, { id: answer.roleId }, function (err, res) {
 					if (err) throw err;
 
@@ -496,4 +513,4 @@ function deleteRole() {
 				});
 			});
 	});
-}}
+}
