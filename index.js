@@ -7,7 +7,7 @@ const prompt = require("./config/prompts");
 require("console.table");
 
 // banner
-console.log
+console.log();
 // launch app
 firstPrompt();
 
@@ -17,7 +17,7 @@ function firstPrompt() {
 		switch (task) {
 			case "View Employees":
 				viewEmployee();
-				break; 
+				break;
 			case "View Employees by Manager":
 				viewEmployeeByManager();
 				break;
@@ -83,7 +83,7 @@ function viewEmployee() {
 		if (err) throw err;
 
 		console.table(res);
-		console.log("\n<>\n");
+		console.log("\n<\n");
 
 		firstPrompt();
 	});
@@ -102,8 +102,9 @@ function viewEmployeeByManager() {
 	connection.query(query, function (err, res) {
 		if (err) throw err;
 
+		// Select manager to view subordinates
 		const managerChoices = res
-
+			// Filter NULL (prevents selecting employees with no assigned manager)
 			.filter((mgr) => mgr.manager_id)
 			.map(({ manager_id, manager }) => ({
 				value: manager_id,
@@ -127,14 +128,13 @@ function viewEmployeeByManager() {
 					if (err) throw err;
 
 					console.table("\nManager's subordinates:", res);
-					console.log("\n<>\n");
+					console.log("\n<\n");
 
 					firstPrompt();
 				});
 			});
 	});
 }
-
 
 function viewEmployeeByDepartment() {
 	console.log("View employees by department\n");
@@ -171,7 +171,7 @@ function viewEmployeeByDepartment() {
 					if (err) throw err;
 
 					console.table("\nDepartment Rota: ", res);
-					console.log("\n<>\n");
+					console.log("\n<\n");
 
 					firstPrompt();
 				});
@@ -187,7 +187,7 @@ function viewDepartments() {
 		res.forEach((department) => {
 			console.log(`ID: ${department.id} | ${department.name} Department`);
 		});
-		console.log("\n<>\n");
+		console.log("\n<\n");
 		firstPrompt();
 	});
 }
@@ -202,7 +202,7 @@ function viewRoles() {
 				`ID: ${role.id} | Title: ${role.title}\n Salary: ${role.salary}\n`,
 			);
 		});
-		console.log("\n<>\n");
+		console.log("\n<\n");
 		firstPrompt();
 	});
 }
@@ -224,7 +224,7 @@ function viewDepartmentBudget() {
 				`Department: ${department.name}\n Budget: ${department.budget}\n`,
 			);
 		});
-		console.log("\n<>\n");
+		console.log("\n<\n");
 		firstPrompt();
 	});
 }
@@ -278,7 +278,7 @@ const addEmployee = () => {
 									if (err) throw err;
 									console.log("\n" + res.affectedRows + " employee created");
 									console.log(
-										"\n<>\n",
+										"\n<\n",
 									);
 									viewEmployee();
 								},
@@ -299,7 +299,7 @@ function addDepartment() {
 				`You have added this department: ${answer.department.toUpperCase()}.`,
 			);
 		});
-		console.log("\n<>\n");
+		console.log("\n<\n");
 		viewDepartments();
 	});
 }
@@ -331,7 +331,7 @@ function addRole() {
 						if (err) throw err;
 
 						console.log("\n" + res.affectedRows + " role created");
-						console.log("\n<>\n");
+						console.log("\n<\n");
 
 						viewRoles();
 					},
@@ -375,7 +375,7 @@ const updateEmployeeRole = () => {
 							console.log(
 								"\n" + "\n" + res.affectedRows + " Updated successfully!",
 							);
-							console.log("\n<>\n");
+							console.log("\n<\n");
 							firstPrompt();
 						},
 					);
@@ -400,11 +400,11 @@ const updateEmployeeManager = () => {
 			});
 			// Select employee's new manager
 			inquirer.prompt(prompt.updateManager(employees)).then((answer) => {
-				
+				// parseInt prompt answers
 				let idCode = parseInt(answer.update);
 				let managerCode = parseInt(answer.manager);
 				connection.query(
-					
+					// replace employee's mgr_ID with emp_ID of new manager
 					`UPDATE employee SET manager_id = ${managerCode} WHERE id = ${idCode}`,
 					(err, res) => {
 						if (err) throw err;
@@ -412,7 +412,7 @@ const updateEmployeeManager = () => {
 						console.log(
 							"\n" + "\n" + res.affectedRows + " Updated successfully!",
 						);
-						console.log("\n<>\n");
+						console.log("\n<\n");
 						firstPrompt();
 					},
 				);
@@ -444,7 +444,7 @@ function deleteEmployee() {
 					if (err) throw err;
 
 					console.log("\n" + res.affectedRows + "  employee deleted");
-					console.log("\n<>\n");
+					console.log("\n<\n");
 
 					firstPrompt();
 				});
@@ -477,7 +477,7 @@ function deleteDepartment() {
 					if (err) throw err;
 
 					console.log("\n" + res.affectedRows + " department deleted");
-					console.log("\n<>\n");
+					console.log("\n<\n");
 
 					viewDepartments();
 				});
@@ -507,7 +507,7 @@ function deleteRole() {
 					if (err) throw err;
 
 					console.log("\n" + res.affectedRows + " role deleted");
-					console.log("\n<>\n");
+					console.log("\n<\n");
 
 					viewRoles();
 				});

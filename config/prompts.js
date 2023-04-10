@@ -1,11 +1,9 @@
 module.exports = {
-	
 	firstPrompt: {
 		type: "list",
 		name: "task",
 		message: "Make a selection:",
 		choices: [
-		
 			"View Employees",
 			"View Employees by Manager",
 			"View Employees by Department",
@@ -23,6 +21,7 @@ module.exports = {
 			"Exit",
 		],
 	},
+
 	viewManagerPrompt: (managerChoices) => [
 		// Select Manager
 		{
@@ -161,7 +160,7 @@ module.exports = {
 			choices: deleteDepartmentChoices,
 		},
 	],
-	
+
 	deleteRolePrompt: (deleteRoleChoices) => [
 		// Select Role to Remove
 		{
