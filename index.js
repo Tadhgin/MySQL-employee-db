@@ -18,9 +18,6 @@ console.log();
 // Launch app
 firstPrompt();
 
-// Import dependencies
-const inquirer = require("inquirer");
-const prompt = require("./config/prompts");
 const {
   viewEmployee,
   viewEmployeeByManager,
@@ -97,12 +94,6 @@ function firstPrompt() {
   });
 }
 
-// Import dependencies
-const consoleTable = require("console.table");
-const connection = require("./connection");
-
-// Define viewEmployee function
-function viewEmployee() {
   console.log("Employee Rota:\n");
 
   // Define SQL query
@@ -124,16 +115,8 @@ function viewEmployee() {
     // Prompt user for next action
     firstPrompt();
   });
-}
-
-// Import dependencies
-const inquirer = require("inquirer");
-const consoleTable = require("console.table");
-const connection = require("./connection");
-const prompt = require("./prompts");
 
 // Define viewEmployeeByManager function
-function viewEmployeeByManager() {
   console.log("Manager Rota:\n");
 
   // Define SQL query to select managers and their IDs
@@ -184,27 +167,8 @@ function viewEmployeeByManager() {
         });
       });
   });
-}
 
-// Import dependencies
-const inquirer = require("inquirer");
-const consoleTable = require("console.table");
-const connection = require("./connection");
-const prompt = require("./prompts");
-
-// Define viewEmployeeByDepartment function
-function viewEmployeeByDepartment() {
   console.log("View employees by department\n");
-
-  // Define SQL query to select departments and their IDs
-  const query1 = `
-    SELECT d.id, d.name
-    FROM employee e
-    LEFT JOIN role r ON e.role_id = r.id
-    LEFT JOIN department d ON d.id = r.department_id
-    GROUP BY d.id, d.name
-  `;
-
   // Execute SQL query to select departments and their IDs
   connection.query(query1, function (err, res) {
     if (err) throw err;
@@ -240,17 +204,7 @@ function viewEmployeeByDepartment() {
         });
       });
   });
-}
-
-// Import dependencies
-const consoleTable = require("console.table");
-const connection = require("./connection");
-
-// Define viewDepartments function
-function viewDepartments() {
   // Define SQL query to select all departments
-  const query = "SELECT * FROM department";
-
   // Execute SQL query to select all departments
   connection.query(query, function (err, res) {
     if (err) throw err;
@@ -263,16 +217,6 @@ function viewDepartments() {
     // Prompt user for next action
     firstPrompt();
   });
-}
-
-// Import dependencies
-const consoleTable = require("console.table");
-const connection = require("./connection");
-
-// Define viewRoles function
-function viewRoles() {
-  // Define SQL query to select all roles
-  const query = "SELECT * FROM role";
 
   // Execute SQL query to select all roles
   connection.query(query, function (err, res) {
@@ -286,16 +230,7 @@ function viewRoles() {
     // Prompt user for next action
     firstPrompt();
   });
-}
-
-// Import dependencies
-const consoleTable = require("console.table");
-const connection = require("./connection");
-
-// Define viewDepartmentBudget function
-function viewDepartmentBudget() {
-  // Define SQL query to select department names and budgets
-  const query = `
+`
     SELECT d.name, r.salary, SUM(r.salary) AS budget
     FROM employee e 
     LEFT JOIN role r ON e.role_id = r.id
@@ -315,15 +250,7 @@ function viewDepartmentBudget() {
     // Prompt user for next action
     firstPrompt();
   });
-}
 
-// Import dependencies
-const inquirer = require("inquirer");
-const connection = require("./connection");
-const prompt = require("./prompts");
-
-// Define addEmployee function
-const addEmployee = () => {
   // Select employee's department
   connection.query(`SELECT * FROM department`, (err, departments) => {
     if (err) throw err;
@@ -383,15 +310,7 @@ const addEmployee = () => {
       });
     });
   });
-};
 
-// Import dependencies
-const inquirer = require("inquirer");
-const connection = require("./connection");
-const prompt = require("./prompts");
-
-// Define addDepartment function
-function addDepartment() {
   // Prompt user to enter new department name
   inquirer
     .prompt(prompt.insertDepartment)
@@ -417,15 +336,7 @@ function addDepartment() {
         }
       );
     });
-}
 
-// Import dependencies
-const inquirer = require("inquirer");
-const connection = require("./connection");
-const prompt = require("./prompts");
-
-// Define addRole function
-function addRole() {
   // Select department for new role
   connection.query(`SELECT * FROM department`, (err, departments) => {
     if (err) throw err;
@@ -458,15 +369,7 @@ function addRole() {
         });
       });
   });
-}
 
-// Import dependencies
-const inquirer = require("inquirer");
-const connection = require("./connection");
-const prompt = require("./prompts");
-
-// Define updateEmployeeRole function
-function updateEmployeeRole() {
   // Select employee to update
   connection.query("SELECT id, first_name, last_name FROM employee", (err, employees) => {
     if (err) throw err;
@@ -508,15 +411,7 @@ function updateEmployeeRole() {
         });
     });
   });
-}
 
-// Import dependencies
-const inquirer = require("inquirer");
-const connection = require("./connection");
-const prompt = require("./prompts");
-
-// Define updateEmployeeManager function
-function updateEmployeeManager() {
   // Select employee to update
   connection.query("SELECT id, first_name, last_name FROM employee", (err, employees) => {
     if (err) throw err;
@@ -548,15 +443,7 @@ function updateEmployeeManager() {
         );
       });
   });
-}
 
-// Import dependencies
-const inquirer = require("inquirer");
-const connection = require("./connection");
-const prompt = require("./prompts");
-
-// Define deleteEmployee function
-function deleteEmployee() {
   console.log("Deleting an employee");
 
   // Select employee to delete
@@ -587,15 +474,7 @@ function deleteEmployee() {
         );
       });
   });
-}
 
-// Import dependencies
-const inquirer = require("inquirer");
-const connection = require("./connection");
-const prompt = require("./prompts");
-
-// Define deleteDepartment function
-function deleteDepartment() {
   console.log("\nRemove a Department:\n");
 
   // Select department to delete
@@ -626,15 +505,7 @@ function deleteDepartment() {
         );
       });
   });
-}
 
-// Import dependencies
-const inquirer = require("inquirer");
-const connection = require("./connection");
-const prompt = require("./prompts");
-
-// Define deleteRole function
-function deleteRole() {
   console.log("Deleting a role");
 
   // Select role to delete
@@ -665,4 +536,3 @@ function deleteRole() {
         );
       });
   });
-}
