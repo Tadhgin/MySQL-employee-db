@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS employeesDB;
-CREATE DATABASE employeesDB;
-USE employeesDB;
+DROP DATABASE IF EXISTS mysql-employee-db;
+CREATE DATABASE mysql-employee-db;
+USE mysql-employee-db;
 
 CREATE TABLE department (
   id INT NOT NULL AUTO_INCREMENT,

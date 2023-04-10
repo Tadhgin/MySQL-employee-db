@@ -1,4 +1,4 @@
-USE employeesDB;
+USE mysql-employee-db;
 
 INSERT INTO department (name)
 VALUES ("Sales");

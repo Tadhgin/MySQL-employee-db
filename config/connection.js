@@ -8,7 +8,7 @@ var connection = mysql.createConnection({
     user: "root",
     password: process.env.DB_PASSWORD,
     // Database created in schemea.sql
-    database: "employeesDB",
+    database: "mysql-employee-db",
 });
 
 // connect to the mysql server and database
