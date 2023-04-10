@@ -1,3 +1,4 @@
+require('dotenv').config()
 const mysql = require("mysql");
 var connection = mysql.createConnection({
     // Connection
@@ -5,7 +6,7 @@ var connection = mysql.createConnection({
     port: 3306,
     // MySQL Workbench
     user: "root",
-    password: PROCESS.ENV.DB_PASSWORD,
+    password: process.env.DB_PASSWORD,
     // Database created in schemea.sql
     database: "employeesDB",
 });
