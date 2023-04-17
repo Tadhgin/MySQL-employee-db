@@ -29,8 +29,8 @@ THEN I am prompted to select an employee to update and their new role and this i
 ````
 ## Mock-Up
 The following video shows an example of the application being used from the command line:
+![msql-db](https://user-images.githubusercontent.com/117637052/232490224-f72e0f02-eb80-4cad-87cf-8a471e2a808f.gif)
 
-![Uploading msql-db.gif…]()
 
 ## Installation
 
