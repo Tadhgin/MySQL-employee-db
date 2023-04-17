@@ -1,14 +1,16 @@
-const inquirer = require('inquirer');
 const consoleTable = require('console.table');
+//const inquirer = require('inquirer');
 const connection = require('./config/connection');
 const prompt = require('./config/prompts');
 
 console.log('');
 
 const launchApp = async () => {
-  await prompt.firstPrompt();
-};
-
+	async function launchApp() {
+		const task = await prompt.firstPrompt();
+		await inquirer.prompt(task).then(handleTask);
+				  }
+				}
 launchApp();
 
 function firstPrompt() {
@@ -64,7 +66,10 @@ function firstPrompt() {
 	  await firstPrompt();
 	};
 
-	inquirer.prompt(prompt.firstPrompt).then(handleTask);
+	async function launchApp() {
+		const task = await prompt.firstPrompt();
+		inquirer.prompt(task).then(handleTask);
+	  }
   }
 function viewEmployee() {
   console.log('Employee:\n');

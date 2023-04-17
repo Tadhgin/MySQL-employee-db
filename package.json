@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/Tadhgin/MySQL-employee-db/issues"
   },
-  "homepage": "https://github.com/Tadhgin/MySQL-employee-db#readme"
+  "homepage": "https://github.com/Tadhgin/MySQL-employee-db#readme",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "dotenv": "^16.0.3",
+    "inquirer": "^9.1.5",
+    "mysql": "^2.18.1"
+  }
 }

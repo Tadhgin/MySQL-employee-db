@@ -1,18 +1,18 @@
 const mysql = require("mysql");
-var connection = mysql.createConnection({
-	// Connection
-	host: "localhost",
-	port: 3306,
-	// MySQL Workbench
-	user: "root",
-	password: "12345678",
-	// Database created in schemea.sql
-	database: "employeesDB",
+require('dotenv').config();
+
+const connection = mysql.createConnection({
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
 });
 
-// connect to the mysql server and database
-connection.connect(function (err) {
-	if (err) throw err;
+connection.connect((err) => {
+  if (err) {
+    console.error("Error connecting to database: ", err.stack);
+    return;
+  }
+  console.log("Connected to database as id ", connection.threadId);
 });
 
 module.exports = connection;
