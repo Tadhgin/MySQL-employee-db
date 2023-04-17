@@ -55,7 +55,7 @@ To run this project on your local machine, follow these steps:
 
    5. Start the application by running the following command:
 
-    npm run
+    npm start
 
    6. Use the arrow keys to navigate the menu and select actions like adding employees, updating roles, and deleting departments.
 
