@@ -66,9 +66,9 @@ function firstPrompt() {
 
 	inquirer.prompt(prompt.firstPrompt).then(handleTask);
   }
-  function viewEmployee()
-	console.log('Employee:\n');
-
+function viewEmployee() {
+  console.log('Employee:\n');
+}
 	const query = `
 	  SELECT
 		e.id,
