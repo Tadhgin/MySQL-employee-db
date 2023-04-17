@@ -1,4 +1,5 @@
-# Company Staff Tracker
+# MySQL Employee Database
+This is a simple employee database application built with MySQL and Node.js. The application allows you to view, add, update, and delete employees, departments, and roles.
 
 ## User Story
 ````
@@ -29,3 +30,26 @@ THEN I am prompted to select an employee to update and their new role and this i
 ## Mock-Up
 
 The following video shows an example of the application being used from the command line:
+
+## Installation
+
+To install the application, clone the repository to your local machine, navigate to the project directory, and run the following command to install the dependencies:
+
+npm install
+
+You will also need to set up a MySQL database with the schema and seed data provided in the db folder.
+Usage
+
+To start the application, run the following command:
+
+npm start
+
+The application will prompt you to choose from a list of actions, including viewing employees, departments, and roles, adding employees, departments, and roles, updating employee roles, and deleting employees.
+
+## Credits
+
+This application was created by Tadhgin White.
+
+## License
+
+This application is licensed under the MIT License.
