@@ -28,8 +28,9 @@ WHEN I choose to update an employee role
 THEN I am prompted to select an employee to update and their new role and this information is updated in the database
 ````
 ## Mock-Up
-
 The following video shows an example of the application being used from the command line:
+
+![Uploading msql-db.gif…]()
 
 ## Installation
 
@@ -55,7 +56,7 @@ To run this project on your local machine, follow these steps:
 
    5. Start the application by running the following command:
 
-    npm run
+    npm start
 
    6. Use the arrow keys to navigate the menu and select actions like adding employees, updating roles, and deleting departments.
 
