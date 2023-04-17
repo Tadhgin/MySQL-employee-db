@@ -35,31 +35,32 @@ The following video shows an example of the application being used from the comm
 
 To run this project on your local machine, follow these steps:
 
-   Clone the repository to your local machine by running the following command in your terminal:
+    Clone the repository to your local machine by running the following command in your terminal:
 
-- git clone https://github.com/Tadhgin/MySQL-employee-db.git
+ - git clone https://github.com/Tadhgin/MySQL-employee-db.git
 
-   Navigate to the project directory in your terminal:
+    Navigate to the project directory in your terminal:
 
-- cd MySQL-employee-db
+cd MySQL-employee-db
 
-   Install the dependencies by running the following command:
+    Install the dependencies by running the following command:
 
-- npm install
+npm install
 
-   Set up the MySQL database by importing the schema and seed data from the db folder. You can do this using a tool like MySQL Workbench or by running the following commands in your terminal:
+    Set up the MySQL database by importing the schema and seed data from the db folder. You can do this using a tool like MySQL Workbench or by running the following commands in your terminal:
 
-- mysql -u <username> -p < db/schema.sql
-- mysql -u <username> -p < db/seeds.sql
-- Make sure to replace <username> with your MySQL username.
+mysql -u <username> -p < db/schema.sql
+mysql -u <username> -p < db/seeds.sql
 
-   Start the application by running the following command:
+Make sure to replace <username> with your MySQL username.
 
-- npm start
+    Start the application by running the following command:
 
-   Use the arrow keys to navigate the menu and select actions like adding employees, updating roles, and deleting departments.
+npm start
 
-That's it! You should now be able to use the MySQL-employee-db application on your local machine. :)
+    Use the arrow keys to navigate the menu and select actions like adding employees, updating roles, and deleting departments.
+
+That's it! You should now be able to use the MySQL-employee-db application on your local machine.
 
 The application will prompt you to choose from a list of actions, including viewing employees, departments, and roles, adding employees, departments, and roles, updating employee roles, and deleting employees.
 
