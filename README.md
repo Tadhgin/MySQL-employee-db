@@ -1,5 +1,5 @@
 # MySQL Employee Database
-This is a simple employee database application built with MySQL and Node.js. The application allows you to view, add, update, and delete employees, departments, and roles.
+The MySQL-employee-db repository is a simple employee database application built with MySQL and Node.js. The application allows you to view, add, update, and delete employees, departments, and roles.
 
 ## User Story
 ````
@@ -33,16 +33,34 @@ The following video shows an example of the application being used from the comm
 
 ## Installation
 
-To install the application, clone the repository to your local machine, navigate to the project directory, and run the following command to install the dependencies:
+To run this project on your local machine, follow these steps:
+
+    - Clone the repository to your local machine by running the following command in your terminal:
+
+git clone https://github.com/Tadhgin/MySQL-employee-db.git
+
+    - Navigate to the project directory in your terminal:
+
+cd MySQL-employee-db
+
+    - Install the dependencies by running the following command:
 
 npm install
 
-You will also need to set up a MySQL database with the schema and seed data provided in the db folder.
-Usage
+    - Set up the MySQL database by importing the schema and seed data from the db folder. You can do this using a tool like MySQL Workbench or by running the following commands in your terminal:
 
-To start the application, run the following command:
+mysql -u <username> -p < db/schema.sql
+mysql -u <username> -p < db/seeds.sql
+
+Make sure to replace <username> with your MySQL username.
+
+    - Start the application by running the following command:
 
 npm start
+
+    - Use the arrow keys to navigate the menu and select actions like adding employees, updating roles, and deleting departments.
+
+That's it! You should now be able to use the MySQL-employee-db application on your local machine. :)
 
 The application will prompt you to choose from a list of actions, including viewing employees, departments, and roles, adding employees, departments, and roles, updating employee roles, and deleting employees.
 
