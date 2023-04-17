@@ -45,7 +45,8 @@ To start the application, run the following command:
 npm start
 
 The application will prompt you to choose from a list of actions, including viewing employees, departments, and roles, adding employees, departments, and roles, updating employee roles, and deleting employees.
-Credits
+
+## Credits
 
 This application was created by Tadhgin White.
 
